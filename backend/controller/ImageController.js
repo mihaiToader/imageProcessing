@@ -1,7 +1,7 @@
 let express = require('express');
 let router = express.Router();
 let bodyParser = require('body-parser');
-let jimp = require('../service/ImageService');
+let jimp = require('../service/imageService');
 let Jimp = require("jimp");
 
 router.use(bodyParser.urlencoded({extended: true}));
