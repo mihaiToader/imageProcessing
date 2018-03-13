@@ -1,4 +1,37 @@
-<p>
-  home-page works!
-</p>
-<img src={{imageToShow}} />
+<app-spinner [show]="loading"></app-spinner>
+
+<a href={{imageToShow}} download="image" #saveImage style="display: none;"></a>
+
+<div class="row images">
+  <div class="col-md-6">
+    <img src={{originalImage}} class="image"/>
+  </div>
+  <div class="col-md-6">
+    <img src={{imageToShow}} class="image"/>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <image-upload
+      url="http://localhost:3000/img/setImage"
+      (uploadFinished)="getCurrentImage($event)"
+    ></image-upload>
+  </div>
+  <div class="col-md-7">
+    <div>
+      <h3>Colors</h3>
+    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+      <button type="button" class="btn btn-primary" (click)="getInvertImage()">Invert</button>
+      <button type="button" class="btn btn-warning" (click)="getGrayscaleImage()">Grayscale</button>
+      <button type="button" class="btn btn-success" (click)="getNormalize()">Normalize</button>
+      <button type="button" class="btn btn-primary" (click)="getDither565()">Dither565</button>
+      <button type="button" class="btn btn-danger" (click)="getChangeColors()">Change colors</button>
+    </div>
+    </div>
+  </div>
+  <div class="col-md-1 save-btn-holder">
+    <button type="button" class="btn btn-success" (click)="saveImage.click()">Save</button>
+  </div>
+</div>
+

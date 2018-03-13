@@ -14,7 +14,26 @@ export class ImageService {
   }
 
   getImage(): Promise<any> {
-    console.log('asdsad');
     return this.http.get(`${this.apiUrl}/img`).toPromise();
+  }
+
+  getInvert(): Promise<any> {
+    return this.http.get(`${this.apiUrl}/img/invert`).toPromise();
+  }
+
+  getGrayscale(): Promise<any> {
+    return this.http.get(`${this.apiUrl}/img/grayscale`).toPromise();
+  }
+
+  getNormalize(): Promise<any> {
+    return this.http.get(`${this.apiUrl}/img/normalize`).toPromise();
+  }
+
+  getDither565(): Promise<any> {
+    return this.http.get(`${this.apiUrl}/img/dither565`).toPromise();
+  }
+
+  getChangeColors(): Promise<any> {
+    return this.http.get(`${this.apiUrl}/img/changeColors`).toPromise();
   }
 }

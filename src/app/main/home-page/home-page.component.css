@@ -1,0 +1,15 @@
+.image {
+  max-height: 500px;
+}
+
+.secondImage {
+  margin-left: 10px;
+}
+
+.images {
+  height: 500px;
+}
+
+.save-btn-holder {
+  margin-top: 50px;
+}
