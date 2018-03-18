@@ -5,6 +5,9 @@ import { SharedModule } from '@app/shared/shared.module';
 import { MainRoutingModule } from '@app/main/main-routing.module';
 import { ImageUploadModule } from 'angular2-image-upload';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { Lab1Component } from './lab-1/lab-1.component';
+import { Lab2Component } from './lab-2/lab-2.component';
+import { LabMenuComponent } from './lab-menu/lab-menu.component';
 
 @NgModule({
   imports: [
@@ -13,7 +16,12 @@ import { SpinnerComponent } from './spinner/spinner.component';
     MainRoutingModule,
     ImageUploadModule.forRoot(),
   ],
-  declarations: [HomePageComponent, SpinnerComponent],
+  declarations: [
+    HomePageComponent,
+    SpinnerComponent,
+    Lab1Component,
+    Lab2Component
+  ],
 })
 export class MainModule {
 

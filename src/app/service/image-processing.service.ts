@@ -36,4 +36,8 @@ export class ImageService {
   getChangeColors(): Promise<any> {
     return this.http.get(`${this.apiUrl}/img/changeColors`).toPromise();
   }
+
+  switchImages(): Promise<any> {
+    return this.http.get(`${this.apiUrl}/img/switch`).toPromise();
+  }
 }

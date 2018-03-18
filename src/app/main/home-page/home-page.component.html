@@ -16,22 +16,26 @@
     <image-upload
       url="http://localhost:3000/img/setImage"
       (uploadFinished)="getCurrentImage($event)"
+      (uploadStateChanged)="loading=true">
     ></image-upload>
   </div>
-  <div class="col-md-7">
-    <div>
-      <h3>Colors</h3>
-    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-      <button type="button" class="btn btn-primary" (click)="getInvertImage()">Invert</button>
-      <button type="button" class="btn btn-warning" (click)="getGrayscaleImage()">Grayscale</button>
-      <button type="button" class="btn btn-success" (click)="getNormalize()">Normalize</button>
-      <button type="button" class="btn btn-primary" (click)="getDither565()">Dither565</button>
-      <button type="button" class="btn btn-danger" (click)="getChangeColors()">Change colors</button>
-    </div>
-    </div>
+  <div class="col-md-4">
+    <app-lab-1 [class]="labs[0]" [(imageToShow)]="imageToShow" [(loading)]="loading"></app-lab-1>
+    <app-lab-2 [class]="labs[1]" [(imageToShow)]="imageToShow" [(loading)]="loading"></app-lab-2>
   </div>
-  <div class="col-md-1 save-btn-holder">
-    <button type="button" class="btn btn-success" (click)="saveImage.click()">Save</button>
+  <div class="col-md-4 save-btn-holder">
+    <div class="row">
+      <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+        <button type="button" class="btn" [class]="displayedLabIndex == 0 ? 'btn-primary' : 'btn-success'" (click)="displayLab(1)">Lab 1</button>
+        <button type="button" class="btn" [class]="displayedLabIndex == 1 ? 'btn-primary' : 'btn-success'" (click)="displayLab(2)">Lab 2</button>
+      </div>
+    </div>
+    <div class="row save-btn-holder">
+      <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+        <button type="button" class="btn btn-success" (click)="saveImage.click()">Save</button>
+        <button type="button" class="btn btn-danger" (click)="switchImages()">Switch</button>
+      </div>
+    </div>
   </div>
 </div>
 

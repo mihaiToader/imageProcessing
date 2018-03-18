@@ -39,6 +39,11 @@ router.post('/setImage', upload.single('image'), (req, res) => {
     });
 });
 
+router.get('/switch', (req, res) => {
+  jimp.switch();
+  res.sendStatus(200);
+});
+
 router.get('/invert', (req, res) => {
   sendBase64(jimp.invert(), res);
 });

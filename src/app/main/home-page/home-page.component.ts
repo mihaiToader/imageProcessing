@@ -11,10 +11,30 @@ export class HomePageComponent implements OnInit {
   imageToShow: any;
   originalImage: any;
 
+  labs: any;
+  displayedLabIndex: number;
+
   constructor(private imageService: ImageService) {
+    this.labs = ['', 'hidden'];
+    this.displayedLabIndex = 0;
   }
 
   ngOnInit() {
+  }
+
+  displayLab(index: number) {
+    this.labs[this.displayedLabIndex] = 'hidden';
+    this.labs[index - 1] = '';
+    this.displayedLabIndex = index - 1;
+  }
+
+  switchImages() {
+    const aux = this.imageToShow;
+    this.imageToShow = this.originalImage;
+    this.originalImage = aux;
+    this.imageService.switchImages()
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   }
 
   getCurrentImage($event) {
@@ -34,79 +54,6 @@ export class HomePageComponent implements OnInit {
       });
   }
 
-  getInvertImage() {
-    this.loading = true;
-    this.imageService.getInvert()
-      .then((res) => {
-        if (res.status === 'ok') {
-          this.imageToShow = res.img;
-        }
-        this.loading = false;
-      })
-      .catch((err) => {
-        console.log(err);
-        this.loading = false;
-      });
-  }
 
-  getGrayscaleImage() {
-    this.loading = true;
-    this.imageService.getGrayscale()
-      .then((res) => {
-        if (res.status === 'ok') {
-          this.imageToShow = res.img;
-        }
-        this.loading = false;
-      })
-      .catch((err) => {
-        console.log(err);
-        this.loading = false;
-      });
-  }
-
-  getNormalize() {
-    this.loading = true;
-    this.imageService.getNormalize()
-      .then((res) => {
-        if (res.status === 'ok') {
-          this.imageToShow = res.img;
-        }
-        this.loading = false;
-      })
-      .catch((err) => {
-        console.log(err);
-        this.loading = false;
-      });
-  }
-
-  getDither565() {
-    this.loading = true;
-    this.imageService.getDither565()
-      .then((res) => {
-        if (res.status === 'ok') {
-          this.imageToShow = res.img;
-        }
-        this.loading = false;
-      })
-      .catch((err) => {
-        console.log(err);
-        this.loading = false;
-      });
-  }
-
-  getChangeColors() {
-    this.loading = true;
-    this.imageService.getChangeColors()
-      .then((res) => {
-        if (res.status === 'ok') {
-          this.imageToShow = res.img;
-        }
-        this.loading = false;
-      })
-      .catch((err) => {
-        console.log(err);
-        this.loading = false;
-      });
-  }
 
 }
