@@ -10,9 +10,12 @@ export class HomePageComponent implements OnInit {
   loading = false;
   imageToShow: any;
   originalImage: any;
-
+  secondOriginalImage: any;
   labs: any;
   displayedLabIndex: number;
+  showSecondImage = false;
+  urlUploadImage = 'http://localhost:3000/img/setImage';
+  imageToUpload = 1;
 
   constructor(private imageService: ImageService) {
     this.labs = ['', 'hidden'];
@@ -20,6 +23,10 @@ export class HomePageComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  changeShowSecondImage() {
+    this.showSecondImage = ! this.showSecondImage;
   }
 
   displayLab(index: number) {
@@ -37,7 +44,21 @@ export class HomePageComponent implements OnInit {
       .catch((err) => console.log(err));
   }
 
-  getCurrentImage($event) {
+  loadImage(value: number) {
+    switch (value) {
+      case 1:
+        this.urlUploadImage = 'http://localhost:3000/img/setImage';
+        break;
+      case 2:
+        this.urlUploadImage = 'http://localhost:3000/img/setSecondImage';
+        break;
+      default:
+        console.log('error');
+    }
+    this.imageToUpload = value;
+  }
+
+  getCurrentImage() {
     this.loading = true;
     this.imageService.getImage()
       .then((res) => {
@@ -54,6 +75,33 @@ export class HomePageComponent implements OnInit {
       });
   }
 
+  getSecondImage() {
+    this.loading = true;
+    this.imageService.getSecondImage()
+      .then((res) => {
+        console.log(res);
+        if (res.status === 'ok') {
+          this.secondOriginalImage = res.img;
+        }
+        this.loading = false;
+      })
+      .catch((err) => {
+        this.loading = false;
+        console.log(err);
+      });
+  }
 
+  uploadFinished($event) {
+    switch (this.imageToUpload) {
+      case 1:
+        this.getCurrentImage();
+        break;
+      case 2:
+        this.getSecondImage();
+        break;
+      default:
+        console.log('error');
+    }
+  }
 
 }

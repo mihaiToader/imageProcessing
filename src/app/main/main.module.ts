@@ -7,7 +7,6 @@ import { ImageUploadModule } from 'angular2-image-upload';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { Lab1Component } from './lab-1/lab-1.component';
 import { Lab2Component } from './lab-2/lab-2.component';
-import { LabMenuComponent } from './lab-menu/lab-menu.component';
 
 @NgModule({
   imports: [

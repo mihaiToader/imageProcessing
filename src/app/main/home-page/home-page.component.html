@@ -11,31 +11,56 @@
   </div>
 </div>
 
+<div [class]="showSecondImage ? 'row secondOriginalImage' : 'secondOriginalImage'">
+  <div [class]="showSecondImage ? 'col-md-6' : 'hidden'">
+    <img src={{secondOriginalImage}} class="image"/>
+  </div>
+  <div [class]="showSecondImage ? 'col-md-6' : 'row'">
+    <div [class]="showSecondImage ? 'row' : 'col-md-6 when-second-image-hidden'">
+      <app-lab-1 [class]="labs[0]" [(imageToShow)]="imageToShow" [(loading)]="loading"></app-lab-1>
+      <app-lab-2 [class]="labs[1]" [(imageToShow)]="imageToShow" [(loading)]="loading"></app-lab-2>
+    </div>
+    <div [class]="showSecondImage ? '' : 'col-md-6'">
+      <div class="row btn-spaces">
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+          <button type="button" [class]="displayedLabIndex == 0 ? 'btn btn-success' : 'btn'"
+                  (click)="displayLab(1)">Lab 1
+          </button>
+          <button type="button" [class]="displayedLabIndex == 1 ? 'btn btn-success' : 'btn'"
+                  (click)="displayLab(2)">Lab 2
+          </button>
+        </div>
+      </div>
+      <div class="row btn-spaces">
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+          <button type="button" class="btn btn-success" (click)="saveImage.click()">Save</button>
+          <button type="button" class="btn btn-primary" (click)="switchImages()">Switch rez <-> 1</button>
+          <button type="button" class="btn btn-danger" (click)="switchImages()">Switch rez <-> 2</button>
+          <button type="button" class="btn btn-info" (click)="switchImages()">Switch 1 <-> 2</button>
+        </div>
+      </div>
+      <div class="row btn-spaces">
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+          <button type="button" [class]="showSecondImage ? 'btn btn-primary' : 'btn'" (click)="changeShowSecondImage()">
+            Show second image
+          </button>
+          <button type="button" [class]="imageToUpload == 1 ? 'btn btn-warning' : 'btn btn-danger'" (click)="loadImage(1)">Load first image</button>
+          <button type="button" [class]="imageToUpload == 2 ? 'btn btn-warning' : 'btn btn-danger'" (click)="loadImage(2)">Load second image</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="row">
   <div class="col-md-4">
     <image-upload
-      url="http://localhost:3000/img/setImage"
-      (uploadFinished)="getCurrentImage($event)"
+      url="{{urlUploadImage}}"
+      (uploadFinished)="uploadFinished($event)"
       (uploadStateChanged)="loading=true">
-    ></image-upload>
+      >
+    </image-upload>
   </div>
-  <div class="col-md-4">
-    <app-lab-1 [class]="labs[0]" [(imageToShow)]="imageToShow" [(loading)]="loading"></app-lab-1>
-    <app-lab-2 [class]="labs[1]" [(imageToShow)]="imageToShow" [(loading)]="loading"></app-lab-2>
-  </div>
-  <div class="col-md-4 save-btn-holder">
-    <div class="row">
-      <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-        <button type="button" class="btn" [class]="displayedLabIndex == 0 ? 'btn-primary' : 'btn-success'" (click)="displayLab(1)">Lab 1</button>
-        <button type="button" class="btn" [class]="displayedLabIndex == 1 ? 'btn-primary' : 'btn-success'" (click)="displayLab(2)">Lab 2</button>
-      </div>
-    </div>
-    <div class="row save-btn-holder">
-      <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-        <button type="button" class="btn btn-success" (click)="saveImage.click()">Save</button>
-        <button type="button" class="btn btn-danger" (click)="switchImages()">Switch</button>
-      </div>
-    </div>
-  </div>
+
 </div>
 

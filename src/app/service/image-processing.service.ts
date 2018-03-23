@@ -17,6 +17,10 @@ export class ImageService {
     return this.http.get(`${this.apiUrl}/img`).toPromise();
   }
 
+  getSecondImage(): Promise<any> {
+    return this.http.get(`${this.apiUrl}/img/getSecond`).toPromise();
+  }
+
   getInvert(): Promise<any> {
     return this.http.get(`${this.apiUrl}/img/invert`).toPromise();
   }

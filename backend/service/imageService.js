@@ -2,11 +2,16 @@ let Jimp = require("jimp");
 let removeFiles = require("./removefiles");
 
 let currentImage = null;
+let secondImage = null;
 let modifiedImage = null;
 
 let imageProcessing = {
   getCurrent: () => {
     return currentImage;
+  },
+
+  getSecond: () => {
+    return secondImage;
   },
 
   switch: () => {
@@ -19,6 +24,14 @@ let imageProcessing = {
     return Jimp.read(imgPath)
       .then((image) => {
         currentImage = image;
+        removeFiles("uploads");
+      })
+  },
+
+  setSecondImage: (imgPath) => {
+    return Jimp.read(imgPath)
+      .then((image) => {
+        secondImage = image;
         removeFiles("uploads");
       })
   },

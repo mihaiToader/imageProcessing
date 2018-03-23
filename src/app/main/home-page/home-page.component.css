@@ -10,10 +10,18 @@
   height: 500px;
 }
 
-.save-btn-holder {
+.secondOriginalImage {
+  max-height: 500px;
+}
+
+.btn-spaces {
   margin-top: 50px;
 }
 
 .hidden {
   display: none;
+}
+
+.when-second-image-hidden {
+  padding-left: 30px;
 }

@@ -27,11 +27,24 @@ let sendBase64 = (img, res) => {
 router.get('/', function (req, res) {
   const current = jimp.getCurrent();
   sendBase64(current, res);
+});
 
+router.get('/getSecond', function (req, res) {
+  const current = jimp.getSecond();
+  sendBase64(current, res);
 });
 
 router.post('/setImage', upload.single('image'), (req, res) => {
   jimp.setCurrentImage(req.file.path)
+    .then(i => res.sendStatus(200))
+    .catch(err => {
+      console.log(err);
+      res.sendStatus(404);
+    });
+});
+
+router.post('/setSecondImage', upload.single('image'), (req, res) => {
+  jimp.setSecondImage(req.file.path)
     .then(i => res.sendStatus(200))
     .catch(err => {
       console.log(err);
