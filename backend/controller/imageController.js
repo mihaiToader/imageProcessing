@@ -57,6 +57,11 @@ router.get('/switch', (req, res) => {
   res.sendStatus(200);
 });
 
+router.get('/switch2', (req, res) => {
+  jimp.switch2();
+  res.sendStatus(200);
+});
+
 router.get('/invert', (req, res) => {
   sendBase64(jimp.invert(), res);
 });
@@ -75,5 +80,9 @@ router.get('/dither565', (req, res) => {
 
 router.get('/changeColors', (req, res) => {
   sendBase64(jimp.changeColors(), res);
+});
+
+router.get('/findDifferences', (req, res) => {
+  sendBase64(jimp.findDifference(), res);
 });
 module.exports = router;

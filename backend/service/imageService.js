@@ -20,6 +20,12 @@ let imageProcessing = {
     modifiedImage = aux;
   },
 
+  switch2: () => {
+    let aux = currentImage;
+    currentImage = secondImage;
+    secondImage = aux;
+  },
+
   setCurrentImage: (imgPath) => {
     return Jimp.read(imgPath)
       .then((image) => {
@@ -94,8 +100,21 @@ let imageProcessing = {
     } else {
       return null;
     }
-  }
+  },
 
+  findDifference: () => {
+    if (currentImage && secondImage) {
+      let imageWithDifferences = currentImage.clone();
+      imageWithDifferences.scan(0, 0, imageWithDifferences.bitmap.width, imageWithDifferences.bitmap.height, function (x, y, idx) {
+        if (currentImage.getPixelColor(x, y) === secondImage.getPixelColor(x, y)) {
+          imageWithDifferences.setPixelColor(0, x, y);
+        }
+      });
+      return imageWithDifferences;
+    } else {
+      return null;
+    }
+  }
 
 };
 

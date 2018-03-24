@@ -44,6 +44,15 @@ export class HomePageComponent implements OnInit {
       .catch((err) => console.log(err));
   }
 
+  switchImages2() {
+    const aux = this.originalImage;
+    this.originalImage = this.secondOriginalImage;
+    this.secondOriginalImage = aux;
+    this.imageService.switchImages2()
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  }
+
   loadImage(value: number) {
     switch (value) {
       case 1:

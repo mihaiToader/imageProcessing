@@ -30,4 +30,19 @@ export class Lab2Component implements OnInit {
     this.imageToShowChange.emit(this.imageToShow);
   }
 
+  getDifferences() {
+    this.setLoading(true);
+    this.imageService.findDifferences()
+      .then((res) => {
+        if (res.status === 'ok') {
+          this.setImageToShow(res.img);
+        }
+        this.setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        this.setLoading(false);
+      });
+  }
+
 }

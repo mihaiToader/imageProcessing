@@ -44,4 +44,12 @@ export class ImageService {
   switchImages(): Promise<any> {
     return this.http.get(`${this.apiUrl}/img/switch`).toPromise();
   }
+
+  switchImages2(): Promise<any> {
+    return this.http.get(`${this.apiUrl}/img/switch2`).toPromise();
+  }
+
+  findDifferences(): Promise<any> {
+    return this.http.get(`${this.apiUrl}/img/findDifferences`).toPromise();
+  }
 }
