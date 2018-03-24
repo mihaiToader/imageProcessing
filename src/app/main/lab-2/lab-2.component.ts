@@ -11,6 +11,7 @@ export class Lab2Component implements OnInit {
   @Output() loadingChange: EventEmitter<any>;
   @Input() imageToShow: any;
   @Output() imageToShowChange: EventEmitter<any>;
+  nrPixels = 0;
 
   constructor(private imageService: ImageService) {
     this.loadingChange = new EventEmitter<any>();
@@ -45,4 +46,33 @@ export class Lab2Component implements OnInit {
       });
   }
 
+  getGaussian() {
+    this.setLoading(true);
+    this.imageService.gaussian(this.nrPixels)
+      .then((res) => {
+        if (res.status === 'ok') {
+          this.setImageToShow(res.img);
+        }
+        this.setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        this.setLoading(false);
+      });
+  }
+
+  getPixelate() {
+    this.setLoading(true);
+    this.imageService.pixelate(this.nrPixels)
+      .then((res) => {
+        if (res.status === 'ok') {
+          this.setImageToShow(res.img);
+        }
+        this.setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        this.setLoading(false);
+      });
+  }
 }

@@ -7,11 +7,13 @@ import { ImageUploadModule } from 'angular2-image-upload';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { Lab1Component } from './lab-1/lab-1.component';
 import { Lab2Component } from './lab-2/lab-2.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
+    FormsModule,
     MainRoutingModule,
     ImageUploadModule.forRoot(),
   ],

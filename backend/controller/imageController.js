@@ -82,6 +82,14 @@ router.get('/changeColors', (req, res) => {
   sendBase64(jimp.changeColors(), res);
 });
 
+router.get('/gaussian/:nrPixels', (req, res) => {
+  sendBase64(jimp.gaussian(parseInt(req.params.nrPixels)), res);
+});
+
+router.get('/pixelate/:nrPixels', (req, res) => {
+  sendBase64(jimp.pixelate(parseInt(req.params.nrPixels)), res);
+});
+
 router.get('/findDifferences', (req, res) => {
   sendBase64(jimp.findDifference(), res);
 });

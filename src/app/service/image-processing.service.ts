@@ -52,4 +52,12 @@ export class ImageService {
   findDifferences(): Promise<any> {
     return this.http.get(`${this.apiUrl}/img/findDifferences`).toPromise();
   }
+
+  gaussian(nrPixels: number): Promise<any> {
+    return this.http.get(`${this.apiUrl}/img/gaussian/${nrPixels}`).toPromise();
+  }
+
+  pixelate(nrPixels: number): Promise<any> {
+    return this.http.get(`${this.apiUrl}/img/pixelate/${nrPixels}`).toPromise();
+  }
 }

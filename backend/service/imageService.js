@@ -5,6 +5,9 @@ let currentImage = null;
 let secondImage = null;
 let modifiedImage = null;
 
+let img1Path = null;
+let img2Path = null;
+
 let imageProcessing = {
   getCurrent: () => {
     return currentImage;
@@ -27,18 +30,20 @@ let imageProcessing = {
   },
 
   setCurrentImage: (imgPath) => {
+    img1Path = imgPath;
     return Jimp.read(imgPath)
       .then((image) => {
         currentImage = image;
-        removeFiles("uploads");
+        removeFiles("uploads", img1Path, img2Path);
       })
   },
 
   setSecondImage: (imgPath) => {
+    img2Path = imgPath;
     return Jimp.read(imgPath)
       .then((image) => {
         secondImage = image;
-        removeFiles("uploads");
+        removeFiles("uploads", img1Path, img2Path);
       })
   },
 
@@ -111,6 +116,36 @@ let imageProcessing = {
         }
       });
       return imageWithDifferences;
+    } else {
+      return null;
+    }
+  },
+
+  gaussian: (nrPixels) => {
+    if (currentImage) {
+      modifiedImage = currentImage.clone().gaussian(nrPixels);
+      return modifiedImage;
+    } else {
+      return null;
+    }
+  },
+
+  pixelate: (nrPixels) => {
+    if (currentImage) {
+      modifiedImage = currentImage.clone().pixelate(nrPixels);
+      return modifiedImage;
+    } else {
+      return null;
+    }
+  },
+
+  noiceReduction: () => {
+    if (currentImage) {
+      let imageWithNoise = currentImage.clone();
+      imageWithNoise.scan(0, 0, imageWithNoise.bitmap.width, imageWithNoise.bitmap.height, function (x, y, idx) {
+
+      });
+      return imageWithNoise;
     } else {
       return null;
     }
