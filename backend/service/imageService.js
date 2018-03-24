@@ -107,7 +107,7 @@ let imageProcessing = {
       let imageWithDifferences = currentImage.clone();
       imageWithDifferences.scan(0, 0, imageWithDifferences.bitmap.width, imageWithDifferences.bitmap.height, function (x, y, idx) {
         if (currentImage.getPixelColor(x, y) === secondImage.getPixelColor(x, y)) {
-          imageWithDifferences.setPixelColor(0, x, y);
+          imageWithDifferences.setPixelColor(0x0BD626, x, y);
         }
       });
       return imageWithDifferences;

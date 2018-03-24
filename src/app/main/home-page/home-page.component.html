@@ -12,10 +12,10 @@
 </div>
 
 <div [class]="showSecondImage ? 'row secondOriginalImage' : 'secondOriginalImage'">
-  <div [class]="showSecondImage ? 'col-md-6' : 'hidden'">
+  <div [class]="showSecondImage ? 'col-md-8' : 'hidden'">
     <img src={{secondOriginalImage}} class="image"/>
   </div>
-  <div [class]="showSecondImage ? 'col-md-6' : 'row'">
+  <div [class]="showSecondImage ? 'col-md-4' : 'row'">
     <div [class]="showSecondImage ? 'row' : 'col-md-6 when-second-image-hidden'">
       <app-lab-1 [class]="labs[0]" [(imageToShow)]="imageToShow" [(loading)]="loading"></app-lab-1>
       <app-lab-2 [class]="labs[1]" [(imageToShow)]="imageToShow" [(loading)]="loading"></app-lab-2>
