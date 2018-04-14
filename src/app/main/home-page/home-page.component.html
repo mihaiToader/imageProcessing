@@ -1,5 +1,6 @@
 <app-spinner [show]="loading"></app-spinner>
 
+<app-notification [notification]="notification"></app-notification>
 <a href={{imageToShow}} download="image" #saveImage style="display: none;"></a>
 
 <div class="row images">
@@ -19,6 +20,7 @@
     <div [class]="showSecondImage ? 'row' : 'col-md-6 when-second-image-hidden'">
       <app-lab-1 [class]="labs[0]" [(imageToShow)]="imageToShow" [(loading)]="loading"></app-lab-1>
       <app-lab-2 [class]="labs[1]" [(imageToShow)]="imageToShow" [(loading)]="loading"></app-lab-2>
+      <app-lab-3 [class]="labs[2]" [(imageToShow)]="imageToShow" [(loading)]="loading"></app-lab-3>
     </div>
     <div [class]="showSecondImage ? '' : 'col-md-6'">
       <div class="row btn-spaces">
@@ -28,6 +30,9 @@
           </button>
           <button type="button" [class]="displayedLabIndex == 1 ? 'btn btn-success' : 'btn'"
                   (click)="displayLab(2)">Lab 2
+          </button>
+          <button type="button" [class]="displayedLabIndex == 2 ? 'btn btn-success' : 'btn'"
+                  (click)="displayLab(3)">Lab 3
           </button>
         </div>
       </div>
@@ -45,6 +50,14 @@
           </button>
           <button type="button" [class]="imageToUpload == 1 ? 'btn btn-warning' : 'btn btn-danger'" (click)="loadImage(1)">Load first image</button>
           <button type="button" [class]="imageToUpload == 2 ? 'btn btn-warning' : 'btn btn-danger'" (click)="loadImage(2)">Load second image</button>
+        </div>
+      </div>
+      <div class="row btn-spaces">
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+          <a class="btn btn-primary" [routerLink]="['/full']" target="_blank">
+            See full image
+          </a>
+
         </div>
       </div>
     </div>

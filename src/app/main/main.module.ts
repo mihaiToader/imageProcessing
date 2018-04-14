@@ -8,6 +8,9 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { Lab1Component } from './lab-1/lab-1.component';
 import { Lab2Component } from './lab-2/lab-2.component';
 import { FormsModule } from '@angular/forms';
+import { Lab3Component } from './lab-3/lab-3.component';
+import { FullImageComponent } from './full-image/full-image.component';
+import { NotificationComponent } from './notification/notification.component';
 
 @NgModule({
   imports: [
@@ -21,7 +24,10 @@ import { FormsModule } from '@angular/forms';
     HomePageComponent,
     SpinnerComponent,
     Lab1Component,
-    Lab2Component
+    Lab2Component,
+    Lab3Component,
+    FullImageComponent,
+    NotificationComponent
   ],
 })
 export class MainModule {

@@ -82,15 +82,27 @@ router.get('/changeColors', (req, res) => {
   sendBase64(jimp.changeColors(), res);
 });
 
-router.get('/gaussian/:nrPixels', (req, res) => {
-  sendBase64(jimp.gaussian(parseInt(req.params.nrPixels)), res);
+router.get('/noiseReduction/:vmin/:a/:b/:L', (req, res) => {
+  sendBase64(jimp.noiseReduction(parseInt(req.params.vmin), parseInt(req.params.a), parseInt(req.params.b), parseInt(req.params.L)), res);
 });
 
-router.get('/pixelate/:nrPixels', (req, res) => {
-  sendBase64(jimp.pixelate(parseInt(req.params.nrPixels)), res);
+router.get('/inversareContrast/:w', (req, res) => {
+  sendBase64(jimp.inversareContrast(parseInt(req.params.w)), res);
 });
 
 router.get('/findDifferences', (req, res) => {
   sendBase64(jimp.findDifference(), res);
+});
+
+router.get('/scale/:f', (req, res) => {
+  sendBase64(jimp.scale(parseInt(req.params.f)), res);
+});
+
+router.get('/filtrareDire/:w', (req, res) => {
+  sendBase64(jimp.filtrareDirectionala(parseInt(req.params.w)), res);
+});
+
+router.get('/modified', (req, res) => {
+  sendBase64(jimp.getModified(), res);
 });
 module.exports = router;

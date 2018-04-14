@@ -1,9 +1,31 @@
 <h3>Lab 2</h3>
 <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
   <button type="button" class="btn btn-primary" (click)="getDifferences()">Scade imaginile</button>
-  <button type="button" class="btn btn-warning" (click)="getGaussian()">Gaussian</button>
-  <button type="button" class="btn btn-success" (click)="getPixelate()">Pixelate</button>
+  <button type="button" class="btn btn-warning" (click)="noiseReduction()">Noice reduction</button>
 </div>
 <div class="form-group nrPixels">
-  <input type="text" class="form-control" [(ngModel)]="nrPixels" placeholder="Nr pixels">
+  <div class="input-group mb-2 mr-sm-2">
+    <div class="input-group-prepend">
+      <div class="input-group-text">vmin</div>
+    </div>
+    <input type="text" class="form-control" [(ngModel)]="vmin">
+  </div>
+  <div class="input-group mb-2 mr-sm-2">
+    <div class="input-group-prepend">
+      <div class="input-group-text">a</div>
+    </div>
+    <input type="text" class="form-control" [(ngModel)]="a" placeholder="a">
+  </div>
+  <div class="input-group mb-2 mr-sm-2">
+    <div class="input-group-prepend">
+      <div class="input-group-text">b</div>
+    </div>
+    <input type="text" class="form-control" [(ngModel)]="b" placeholder="b">
+  </div>
+  <div class="input-group mb-2 mr-sm-2">
+    <div class="input-group-prepend">
+      <div class="input-group-text">L</div>
+    </div>
+    <input type="text" class="form-control" [(ngModel)]="L" placeholder="L">
+  </div>
 </div>

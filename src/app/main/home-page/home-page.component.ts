@@ -16,13 +16,17 @@ export class HomePageComponent implements OnInit {
   showSecondImage = false;
   urlUploadImage = 'http://localhost:3000/img/setImage';
   imageToUpload = 1;
+  notification = '';
 
   constructor(private imageService: ImageService) {
-    this.labs = ['', 'hidden'];
+    this.labs = ['', 'hidden', 'hidden'];
     this.displayedLabIndex = 0;
   }
 
   ngOnInit() {
+    this.getCurrentImage();
+    this.getSecondImage();
+    this.getModfiedImage();
   }
 
   changeShowSecondImage() {
@@ -80,7 +84,7 @@ export class HomePageComponent implements OnInit {
       })
       .catch((err) => {
         this.loading = false;
-        console.log(err);
+        this.notification = err.message;
       });
   }
 
@@ -97,6 +101,24 @@ export class HomePageComponent implements OnInit {
       .catch((err) => {
         this.loading = false;
         console.log(err);
+        this.notification = err.message;
+      });
+  }
+
+  getModfiedImage() {
+    this.loading = true;
+    this.imageService.getModified()
+      .then((res) => {
+        console.log(res);
+        if (res.status === 'ok') {
+          this.imageToShow = res.img;
+        }
+        this.loading = false;
+      })
+      .catch((err) => {
+        this.loading = false;
+        console.log(err);
+        this.notification = err.message;
       });
   }
 

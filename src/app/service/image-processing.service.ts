@@ -21,6 +21,10 @@ export class ImageService {
     return this.http.get(`${this.apiUrl}/img/getSecond`).toPromise();
   }
 
+  getModified(): Promise<any> {
+    return this.http.get(`${this.apiUrl}/img/modified`).toPromise();
+  }
+
   getInvert(): Promise<any> {
     return this.http.get(`${this.apiUrl}/img/invert`).toPromise();
   }
@@ -59,5 +63,21 @@ export class ImageService {
 
   pixelate(nrPixels: number): Promise<any> {
     return this.http.get(`${this.apiUrl}/img/pixelate/${nrPixels}`).toPromise();
+  }
+
+  noiseReduction(vmin: number, a: number, b: number, L: number): Promise<any> {
+    return this.http.get(`${this.apiUrl}/img/noiseReduction/${vmin}/${a}/${b}/${L}`).toPromise();
+  }
+
+  inversareContrast(w: number): Promise<any> {
+    return this.http.get(`${this.apiUrl}/img/inversareContrast/${w}`).toPromise();
+  }
+
+  filtrareDir(w: number): Promise<any> {
+    return this.http.get(`${this.apiUrl}/img/filtrareDire/${w}`).toPromise();
+  }
+
+  scale(f: number): Promise<any> {
+    return this.http.get(`${this.apiUrl}/img/scale/${f}`).toPromise();
   }
 }
